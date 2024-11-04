@@ -1,39 +1,61 @@
 import React from "react";
-import { useState } from "react" 
+import { useState } from "react"
 
-function Gamer(props){
+function Gamer(props) {
 
-    const[number,setNumber]=useState(Math.floor(Math.random() * 100) + 1);
-    const[counter,setCounter]=useState(0);
-    props.userObj.number=number
-    
-    function countSteps(){
-        setCounter(counter+1)
-        console.log(counter)    
+    const [number, setNumber] = useState(Math.floor(Math.random() * 100) + 1);
+    const [counter, setCounter] = useState(0);
+    // const [finished, setFinished]=useState(false)
+    props.userObj.number = number
+    let realTimeNumber = props.userObj.number;
+    function countSteps() {
+        setCounter(counter + 1)
+        console.log(counter)
     }
 
-    function addOne(){
-        setNumber(props.userObj.number+1)
-        props.userObj.number = props.userObj.number + 1
+    function addOne() {
+        setNumber(props.userObj.number + 1)
+        realTimeNumber += 1;
         countSteps();
+        setTimeout(handleWinning, 1000);
+
     }
-    function subtract(){
-        setNumber(props.userObj.number-=1)
+    function subtract() {
+        setNumber(props.userObj.number -= 1)
+        realTimeNumber -= 1;
         countSteps();
+        setTimeout(handleWinning, 1000);
+
     }
-    function multiply(){
-        setNumber(props.userObj.number*2)
+    function multiply() {
+        setNumber(props.userObj.number * 2)
+        realTimeNumber = realTimeNumber * 2;
         countSteps();
+        setTimeout(handleWinning, 1000);
     }
-    function divide(){
-        setNumber(props.userObj.number/2)
+    function divide() {
+        setNumber(Math.floor(props.userObj.number / 2))
+        realTimeNumber = Math.floor(realTimeNumber / 2)
         countSteps();
+        setTimeout(handleWinning, 1000);
     }
-    function handleWinning(){
-        if (props.userObj.number===100){
-            console.log("you won")
+    function handleWinning() {
+        if (realTimeNumber === 100) {
+        props.setUsersArr((prev)=>{
+            prev[props.index].isPlaying = false;
+            prev[props.index].score=`${counter+1}`;
+            prev[props.index].score=`${counter+1}`;
+            localStorage.setItem("usersArr",JSON.stringify([...prev]))
+            console.log([...prev]);
+            return [...prev];
+
+
+        })
+        // setTimeout(()=>alert(`you won! your score is ${counter+1}`), 2000);
         }
     }
+
+
 return(
     <>
     <div>{props.userObj.turn}</div>

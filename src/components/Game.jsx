@@ -2,7 +2,7 @@ import Gamer from "./Gamer";
 function Game({usersArr, setUsersArr, isLogin, setIsLogin}) {
     return (
         <>
-        {usersArr.map((user, index)=> user.isPlaying && <Gamer userObj={user} key={index}/>)}
+        {usersArr.map((userObj, index)=> userObj.isPlaying && <Gamer userObj={userObj} key={index} setUsersArr={setUsersArr} index={index}/>)}
         </>
     
     )

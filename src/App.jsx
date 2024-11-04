@@ -7,9 +7,10 @@ import Game from "./components/Game"
 
 
 function App() {
-  const [usersArr, setUsersArr] = useState([{ name: "dave", isPlaying: true, score: [6, 9] }]);
+  const [usersArr, setUsersArr] = useState([]);  
+  console.log('usersArr: ', usersArr);
   const [isLogin, setIsLogin] = useState(true);
-  localStorage.setItem("usersArr", JSON.stringify(usersArr));
+  // localStorage.setItem("usersArr", JSON.stringify(usersArr));
 
   return (
     <>
