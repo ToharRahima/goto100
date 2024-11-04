@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Game from "./Game";
 function Login({ usersArr, setUsersArr, isLogin, setIsLogin}) {
     const [userName, setUserName] = useState("");
     const [userObj, setUserObj] = useState();
