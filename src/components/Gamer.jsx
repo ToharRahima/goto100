@@ -29,6 +29,11 @@ function Gamer(props){
         setNumber(props.userObj.number/2)
         countSteps();
     }
+    function handleWinning(){
+        if (props.userObj.number===100){
+            console.log("you won")
+        }
+    }
 return(
     <>
     <div>{props.userObj.turn}</div>
