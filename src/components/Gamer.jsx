@@ -49,4 +49,3 @@ return(
 )
 }
 export default Gamer
-
