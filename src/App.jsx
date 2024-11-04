@@ -4,10 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './components/Login'
 import Player from "./components/Player";
+import Gamer from './components/Gamer'
 
 
 function App() {
-  const [usersArr, setUsersArr] = useState([{name: "dave",isPlaying: true, score: [6,9]}]);
+  const [usersArr, setUsersArr] = useState([{name: "dave",isPlaying: true, score: [6+",",9]}]);
   
   localStorage.setItem("usersArr", JSON.stringify(usersArr));
   console.log('usersArr: ', usersArr);
@@ -20,7 +21,8 @@ function App() {
       return userObj.isPlaying && <Player userObj={userObj}/>
     }
     )} */}
-    
+    <Gamer userObj={usersArr[0]}/>
+
     </>
   )
   
